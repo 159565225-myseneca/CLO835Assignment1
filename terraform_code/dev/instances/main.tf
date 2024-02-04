@@ -38,6 +38,14 @@ module "globalvars" {
   source = "../../modules/globalvars"
 }
 
+# Create ECR
+resource "aws_ecr_repository" "CLO_ecr_repo" {
+  name = "nmbhatt-repo"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
 # Reference subnet provisioned by 01-Networking 
 resource "aws_instance" "CLO_instance" {
   ami                         = data.aws_ami.latest_amazon_linux.id
@@ -94,10 +102,3 @@ resource "aws_security_group" "CLO_sg" {
   )
 }
 
-resource "aws_ecr_repository" "CLO_ecr_repo" {
-  name = "nmbhatt-repo"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
