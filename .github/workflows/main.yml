@@ -29,7 +29,7 @@ jobs:
     - name: Build, tag, and push images to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: CLO835Assignment1-repo
+        ECR_REPOSITORY: nmbhatt-repo
         IMAGE_TAG: v0.1
       run: |
         cd clo835_summer2023_assignment1-main/
